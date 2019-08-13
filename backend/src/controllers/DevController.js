@@ -8,20 +8,24 @@ module.exports = {
 
         const loggedDev = await Dev.findById(user)
 
-        const users = await Dev.find({
-            $and: [
-                // ne: notEqual, exclude dev logged
-                { _id: { $ne: user } },
+        if (loggedDev) {
+            const users = await Dev.find({
+                $and: [
+                    // ne: notEqual, exclude dev logged
+                    { _id: { $ne: user } },
+    
+                    //nin: not in, exclude all devs that dev liked before
+                    { _id: { $nin: loggedDev.likes } },
+    
+                    //nin: not in, exclude all devs that dev disliked before
+                    { _id: { $nin: loggedDev.dislikes } }
+                ]
+            })
+            return res.json(users)
+        } else {
+            return res.json('[]')
+        }
 
-                //nin: not in, exclude all devs that dev liked before
-                { _id: { $nin: loggedDev.likes } },
-
-                //nin: not in, exclude all devs that dev disliked before
-                { _id: { $nin: loggedDev.dislikes } }
-            ]
-        })
-
-        return res.json(users)
     },
 
     async store(req, res) {
