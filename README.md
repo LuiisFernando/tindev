@@ -14,4 +14,4 @@ Is also consuming NodeJS with axios and was created the routes with react-router
 
 # Mobile
 
-The app was developed in React Native using navigation to set the routes and also consuming backend with axios, to receive information in real time real time is also used socket.io-client.
+The app was developed in React Native using navigation to set the routes and also consuming backend with axios, to receive information in real time is also used socket.io-client.
