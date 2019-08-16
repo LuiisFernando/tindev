@@ -23,8 +23,6 @@ import {
     const [users, setUsers] = useState([])
     const [matchDev, setMatchDev] = useState(null)
 
-    console.log(id)
-
     useEffect(() => {
         async function loadUser() {
             const response = await api.get('/devs', {
