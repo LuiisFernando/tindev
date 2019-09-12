@@ -18,7 +18,7 @@ io.on('connection', socket => {
     connectedUsers[user] = socket.id
 })
 
-mongoose.connect('mongodb+srv://tindev:tindev@chamacarreto-kdy6h.mongodb.net/tindev?retryWrites=true&w=majority', { useNewUrlParser: true })
+mongoose.connect('CONNECTION_STRING', { useNewUrlParser: true })
 
 app.use((req, res, next) => {
     req.io = io
